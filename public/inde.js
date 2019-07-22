@@ -4,8 +4,9 @@ function refresh(todos){
     todos.forEach(t => {
         $('#taskrow').append(
             `<tr>
-            <td>${t}}</td>
-            <td>false</td>
+            <td>${t.id}</td>
+            <td>${t.title}</td>
+            <td>${t.striked}</td>
           </tr>`
         )
         
@@ -15,20 +16,23 @@ function refresh(todos){
 
 $('#taskform').submit((e)=>{
     e.preventDefault()
+
     $.post(
         '/',
         {
             task: $('#task').val()
         },
         (data)=>{
-            let arr=[]
+            // let arr=[]
+            // console.log(data)
+            // for(let i=0;i<10;i++)
+            // {
+            //     arr[i]=data.title
+            // }
             console.log(data)
-            for(let i=0;i<10;i++)
-            {
-                arr[i]=data.title
-            }``
-            refresh(arr)
+            refresh(data)
         }
     )
+    $('#task').val('')
 })
 })

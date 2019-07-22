@@ -39,16 +39,16 @@ app.get('/todos',(req,res)=>{
     // console.log(taskw1.taskw)
     //  let abcd=JSON.parse(taskw1)
     //  console.log(abcd)
-    res.send(taskw1)
+    res.json(taskw1)
   })
 })
 
 
 app.get('/',(req,res)=>{
-    res.render('index',{
-        tasknew
+     Task1.findAll().then(tasks1=>{
+      res.render('index',{tasks1})
+     })
     })
-})
 // app.post('/',(req,res)=>{
 //     tasks.push(req.body.task)
 //     res.redirect('/')
@@ -58,10 +58,12 @@ app.post('/',(req,res)=>{
     const newtask={
         title : req.body.task
         }
-         tasks.push(req.body.task)
-    Task1.create(newtask).then(taskw=>{
+      Task1.create(newtask).then(taskw=>{
+      Task1.findAll().then(abc=>{
+        res.json(abc)
+      })
       //  tasknew=taskw
-         res.json(Task1)
+        //  res.json(Task1)
         // res.redirect('/')
     })
 })

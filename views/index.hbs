@@ -15,8 +15,8 @@
                 <h1 class="text-center">TODOLIST</h1>
               </div>
     <!-- <h1>TODOLIST</h1> -->
-    {{!-- <form id="taskform" action="/" method="POST"> --}}
-    <form id="taskform">
+    <form id="taskform" action="/" method="POST">
+    {{!-- <form id="taskform"> --}}
         <div class="form-group m-3">
           <label class="m-3" for="task"><h3>New Task</h3></label>
           <input type="text" class="form-control col-md-4 m-3" name="task" id="task"  placeholder="Add the new task here.">
@@ -50,11 +50,11 @@
                 <td>Larry</td>
                 <td>false</td>
                 </tr> --}}
-                {{#each tasks as |t| }}
+                {{#each tasks1 as |t| }}
                 <tr>
                   <th scope="row">{{@index}}</th>
                   <td>{{t.title}}</td>
-                  <td>false</td>
+                  <td>{{t.striked}}</td>
                 </tr>
                 {{/each}}
             </tbody>
